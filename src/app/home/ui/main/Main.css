@@ -5,6 +5,7 @@
     flex-direction: column;
     gap: 4rem;
     container-type: inline-size;
+    color: var(--foreground);
 
     .hero {
         h1 {
@@ -36,8 +37,8 @@
 
     .feature-card {
         padding: 2rem;
-        background: var(--card, white);
-        color: var(--card-foreground, black);
+        background: var(--card);
+        color: var(--card-foreground);
         border: 1px solid var(--border);
         border-radius: var(--radius);
         font-size: 1.25rem;
@@ -47,10 +48,17 @@
         justify-content: center;
         text-align: center;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
+        transition: transform 0.3s, background-color 0.3s, border-color 0.3s;
+
+        @media (prefers-color-scheme: dark) {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
 
         &:hover {
             transform: translateY(-5px);
+            background-color: var(--secondary);
+            color: var(--secondary-foreground);
+            border-color: var(--primary);
         }
     }
 }
