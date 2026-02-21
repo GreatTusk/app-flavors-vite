@@ -1,0 +1,73 @@
+@layer theme {
+    .flavor-default {
+        --primary: oklch(0.5 0.2 250);
+        --primary-foreground: oklch(0.98 0 0);
+        --secondary: oklch(0.9 0.05 250);
+        --secondary-foreground: oklch(0.2 0.05 250);
+        --accent: oklch(0.6 0.2 20);
+        --accent-foreground: oklch(0.98 0 0);
+        --background: oklch(0.99 0.01 250);
+        --foreground: oklch(0.1 0.05 250);
+
+        @media (prefers-color-scheme: dark) {
+            &:not(.light) {
+                --background: oklch(0.2 0.05 250);
+                --foreground: oklch(0.95 0.02 250);
+                --primary: oklch(0.6 0.15 250);
+                --secondary: oklch(0.3 0.05 250);
+                --secondary-foreground: oklch(0.9 0.05 250);
+            }
+        }
+
+        &.dark {
+            --background: oklch(0.2 0.05 250);
+            --foreground: oklch(0.95 0.02 250);
+            --primary: oklch(0.6 0.15 250);
+            --secondary: oklch(0.3 0.05 250);
+            --secondary-foreground: oklch(0.9 0.05 250);
+        }
+    }
+
+    .flavor-ucentral {
+        --primary: oklch(0.4 0.25 200);
+        --primary-foreground: oklch(1 0 0);
+        --secondary: oklch(0.2 0.1 200);
+        --secondary-foreground: oklch(0.9 0.1 200);
+        --accent: oklch(0.7 0.25 150);
+        --accent-foreground: oklch(0.1 0.1 200);
+        --background: oklch(0.15 0.05 200);
+        --foreground: oklch(0.95 0.05 200);
+
+        /* ucentral is already dark-ish in the initial implementation,
+           but we can refine it for system dark mode if it was forced light */
+        @media (prefers-color-scheme: dark) {
+            &:not(.light) {
+                --background: oklch(0.12 0.05 200);
+                --foreground: oklch(0.98 0.02 200);
+            }
+        }
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 280px 1fr;
+    grid-template-areas:
+    "header header"
+    "aside main"
+    "footer footer";
+    min-height: 100dvh;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+      "header"
+      "main"
+      "aside"
+      "footer";
+    }
+}
+
+
